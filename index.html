@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        // IMPORTANT: set this in <HEAD> top before any other tag.
+        const setTheme = (theme) => {
+          theme ??= localStorage.theme || "light";
+          document.documentElement.dataset.theme = theme;
+          localStorage.theme = theme;
+        };
+        setTheme();
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Discounter Feuerwerk</title>
+
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-bold-straight/css/uicons-bold-straight.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css">
+
+    <script src="https://kit.fontawesome.com/f6f6445ca5.js" crossorigin="anonymous"></script>
+
+    <script src="../scripts/scrollTop.js"></script>
+    <script src="../scripts/toggleDropdown.js" defer></script>
+    <script src="../scripts/searchOverlay.js" defer></script>
+    <script src="../scripts/sidebar.js" defer></script>
+    <script src="../scripts/countdown.js" defer></script>
+    <script src="../scripts/preloader.js" defer></script>
+    <script src="../scripts/darkmode.js" defer></script>
+    <script src="../scripts/cart.js" defer></script>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <section id="navigation">
+        <div id="nav-content">
+
+            <div id="logo">
+                <img src="img/Logo.png" alt="">
+            </div>
+
+            <div id="countdown-container">
+                <h1 id="date-text">31 DECEMBER 18:00u 2024:</h1>
+                <div id="countdown">
+                    <div class="time" id="days"><h1>00</h1><h2>d</h2></div>
+                    <div class="time" id="hours"><h1>00</h1><h2>h</h2></div>
+                    <div class="time" id="minutes"><h1>00</h1><h2>m</h2></div>
+                    <div class="time" id="seconds"><h1>00</h1><h2>s</h2></div>
+                </div>
+            </div>
+            
+
+            <div id="other-btns">
+                <i id="search-link" onclick="toggleSearchOverlay(event)" class="fi-br-search"></i>
+                <a id="shopping-cart" href="../cart.html">
+                    <i id="cart-link" class="fi-br-shopping-bag"></i>
+                    <h1 id="cart-counter">0</h1>
+                </a>
+                <i id="menu-link" onclick="toggleSidebar(event)" class="fi-br-menu-burger"></i>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="sidebar-holder" onclick="toggleSidebar(event)">
+        <nav id="sidebar">
+            <ul>
+                <li class="active">
+                    <button class="dropdown-btn">
+                        <a href="index.html">
+                            <i class="fa fa-home"></i>
+                            <span>Home</span>
+                        </a>
+                    </button>
+                </li>
+                <li>
+                    <button class="dropdown-btn">
+                        <div>
+                            <i class="fa fa-store"></i>
+                            <a href="lidl.html"><span>Lidl</span></a>
+                        </div>
+                        <i onclick="toggleSubMenu(this)" class="fa fa-chevron-down"></i>
+                    </button>
+                    <ul class="sub-menu">
+                        <div>
+                            <li><a href="lidl/cakes.html">Cakes</a></li>
+                            <li><a href="lidl/compounds.html">Compounds</a></li>
+                            <li><a href="lidl/vuurpijlen.html">Vuurpijlen</a></li>
+                            <li><a href="lidl/knalvuurwerk.html">Knalvuurwerk</a></li>
+                            <li><a href="lidl/pakketten.html">Pakketten</a></li>
+                            <li><a href="lidl/singleshots.html">Single Shots</a></li>
+                            <li><a href="lidl/overig.html">Overig</a></li>
+                        </div>
+                    </ul>
+                </li>
+                <li>
+                    <button class="dropdown-btn">
+                        <div>
+                            <i class="fa fa-store"></i>
+                            <a href="aldi/sud.html"><span>Aldi Sud</span></a>
+                        </div>
+                        <i onclick="toggleSubMenu(this)" class="fa fa-chevron-down"></i>
+                    </button>
+                    <ul class="sub-menu">
+                        <div>
+                            <li><a href="aldi/sud/cakes.html">Cakes</a></li>
+                            <li><a href="aldi/sud/compounds.html">Compounds</a></li>
+                            <li><a href="aldi/sud/vuurpijlen.html">Vuurpijlen</a></li>
+                            <li><a href="aldi/sud/pakketten.html">Pakketten</a></li>
+                            <li><a href="aldi/sud/singleshots.html">Single Shots</a></li>
+                            <li><a href="aldi/sud/overig.html">Overig</a></li>
+                        </div>
+                    </ul>
+                </li>
+                <li>
+                    <button class="dropdown-btn">
+                        <div>
+                            <i class="fa fa-store"></i>
+                            <a href="aldi/nord.html"><span>Aldi Nord</span></a>
+                        </div>
+                        <i onclick="toggleSubMenu(this)" class="fa fa-chevron-down"></i>
+                    </button>
+                    <ul class="sub-menu">
+                        <div>
+                            <li><a href="aldi/nord/cakes.html">Cakes</a></li>
+                            <li><a href="aldi/nord/compounds.html">Compounds</a></li>
+                            <li><a href="aldi/nord/vuurpijlen.html">Vuurpijlen</a></li>
+                            <li><a href="aldi/nord/knalvuurwerk.html">Knalvuurwerk</a></li>
+                            <li><a href="aldi/nord/pakketten.html">Pakketten</a></li>
+                            <li><a href="aldi/nord/singleshots.html">Single Shots</a></li>
+                            <li><a href="aldi/nord/overig.html">Overig</a></li>
+                        </div>
+                    </ul>
+                </li>
+
+                <div id="other-box">
+                    <div id="darkmode-box">
+                        <div id="theme-heading">
+                            <i class="fa fa-moon"></i>
+                            <h1>Light Mode</h1>
+                        </div>
+                        <div id="darkmode-toggle">
+                            <div class="toggle-btn"></div>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+        </nav>
+    </section>
+    
+    
+
+    <section id="search-overlay">
+        <div id="search-bar">
+            <div id="search-holder">
+                <div id="search-box">
+                    <i class="fi-br-search"></i>
+                    <input id="search-input" type="text" placeholder="Zoekterm invoeren..">
+                    <div id="search-icon">
+                        <i class="fi-br-search"></i>
+                    </div>
+                </div>
+                <div id="suggestions" class="suggestions-list">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="home-hero">
+        <h2>Vuurwerk Duitsland</h2>
+        <p>2024 / 2025</p>       
+    </section>
+
+</body>
+
+</html>

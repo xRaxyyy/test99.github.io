@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        // IMPORTANT: set this in <HEAD> top before any other tag.
+        const setTheme = (theme) => {
+          theme ??= localStorage.theme || "light";
+          document.documentElement.dataset.theme = theme;
+          localStorage.theme = theme;
+        };
+        setTheme();
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fonteinen - Discounter Feuerwerk</title>
+
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-bold-straight/css/uicons-bold-straight.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css">
+
+    <script src="https://kit.fontawesome.com/f6f6445ca5.js" crossorigin="anonymous"></script>
+
+    <script src="../scripts/scrollTop.js"></script>
+    <script src="../scripts/toggleDropdown.js" defer></script>
+    <script src="../scripts/searchOverlay.js" defer></script>
+    <script src="../scripts/sidebar.js" defer></script>
+    <script src="../scripts/countdown.js" defer></script>
+    <script src="../scripts/preloader.js" defer></script>
+    <script src="../scripts/darkmode.js" defer></script>
+    <script src="../scripts/cart.js" defer></script>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <section id="navigation">
+        <div id="nav-content">
+
+            <div id="logo">
+                <img src="../img/Logo.png" alt="">
+            </div>
+
+            <div id="countdown-container">
+                <h1 id="date-text">31 DECEMBER 18:00u 2024:</h1>
+                <div id="countdown">
+                    <div class="time" id="days"><h1>00</h1><h2>d</h2></div>
+                    <div class="time" id="hours"><h1>00</h1><h2>h</h2></div>
+                    <div class="time" id="minutes"><h1>00</h1><h2>m</h2></div>
+                    <div class="time" id="seconds"><h1>00</h1><h2>s</h2></div>
+                </div>
+            </div>
+            
+
+            <div id="other-btns">
+                <i id="search-link" onclick="toggleSearchOverlay(event)" class="fi-br-search"></i>
+                <a id="shopping-cart" href="../cart.html">
+                    <i id="cart-link" class="fi-br-shopping-bag"></i>
+                    <h1 id="cart-counter">0</h1>
+                </a>
+                <i id="menu-link" onclick="toggleSidebar(event)" class="fi-br-menu-burger"></i>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="sidebar-holder" onclick="toggleSidebar(event)">
+        <nav id="sidebar">
+            <ul>
+                <li>
+                    <button class="dropdown-btn">
+                        <a href="../index.html">
+                            <i class="fa fa-home"></i>
+                            <span>Home</span>
+                        </a>
+                    </button>
+                </li>
+                <li>
+                    <button class="dropdown-btn">
+                        <div>
+                            <i class="fa fa-store"></i>
+                            <a href="../lidl.html"><span>Lidl</span></a>
+                        </div>
+                        <i onclick="toggleSubMenu(this)" class="fa fa-chevron-down"></i>
+                    </button>
+                    <ul class="sub-menu">
+                        <div>
+                            <li><a href="cakes.html">Cakes</a></li>
+                            <li><a href="compounds.html">Compounds</a></li>
+                            <li class="active"><a href="fonteinen.html">Fonteinen</a></li>
+                            <li><a href="vuurpijlen.html">Vuurpijlen</a></li>
+                            <li><a href="knalvuurwerk.html">Knalvuurwerk</a></li>
+                            <li><a href="pakketten.html">Pakketten</a></li>
+                            <li><a href="singleshots.html">Single Shots</a></li>
+                            <li><a href="overig.html">Overig</a></li>
+                        </div>
+                    </ul>
+                </li>
+                <li>
+                    <button class="dropdown-btn">
+                        <div>
+                            <i class="fa fa-store"></i>
+                            <a href="../aldi/sud.html"><span>Aldi Sud</span></a>
+                        </div>
+                        <i onclick="toggleSubMenu(this)" class="fa fa-chevron-down"></i>
+                    </button>
+                    <ul class="sub-menu">
+                        <div>
+                            <li><a href="../aldi/sud/cakes.html">Cakes</a></li>
+                            <li><a href="../aldi/sud/compounds.html">Compounds</a></li>
+                            <li><a href="../aldi/sud/fonteinen.html">Fonteinen</a></li>
+                            <li><a href="../aldi/sud/vuurpijlen.html">Vuurpijlen</a></li>
+                            <li><a href="../aldi/sud/pakketten.html">Pakketten</a></li>
+                            <li><a href="../aldi/sud/singleshots.html">Single Shots</a></li>
+                            <li><a href="../aldi/sud/overig.html">Overig</a></li>
+                        </div>
+                    </ul>
+                </li>
+                <li>
+                    <button class="dropdown-btn">
+                        <div>
+                            <i class="fa fa-store"></i>
+                            <a href="../aldi/nord.html"><span>Aldi Nord</span></a>
+                        </div>
+                        <i onclick="toggleSubMenu(this)" class="fa fa-chevron-down"></i>
+                    </button>
+                    <ul class="sub-menu">
+                        <div>
+                            <li><a href="../aldi/nord/cakes.html">Cakes</a></li>
+                            <li><a href="../aldi/nord/compounds.html">Compounds</a></li>
+                            <li><a href="../aldi/nord/fonteinen.html">Fonteinen</a></li>
+                            <li><a href="../aldi/nord/vuurpijlen.html">Vuurpijlen</a></li>
+                            <li><a href="../aldi/nord/knalvuurwerk.html">Knalvuurwerk</a></li>
+                            <li><a href="../aldi/nord/pakketten.html">Pakketten</a></li>
+                            <li><a href="../aldi/nord/singleshots.html">Single Shots</a></li>
+                            <li><a href="../aldi/nord/overig.html">Overig</a></li>
+                        </div>
+                    </ul>
+                </li>
+
+                <div id="other-box">
+                    <div id="darkmode-box">
+                        <div id="theme-heading">
+                            <i class="fa fa-moon"></i>
+                            <h1>Light Mode</h1>
+                        </div>
+                        <div id="darkmode-toggle">
+                            <div class="toggle-btn"></div>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+        </nav>
+    </section>
+
+    
+    <section id="scroll-top">
+        <div id="scroll-btn" onclick="scrollToTop()">
+            <i class="fi-br-angle-up"></i>
+        </div>
+    </section>
+
+
+    <section id="search-overlay">
+        <div id="search-bar">
+            <div id="search-holder">
+                <div id="search-box">
+                    <i class="fi-br-search"></i>
+                    <input id="search-input" type="text" placeholder="Zoekterm invoeren..">
+                    <div id="search-icon">
+                        <i class="fi-br-search"></i>
+                    </div>
+                </div>
+                <div id="suggestions" class="suggestions-list">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="lidl-header">
+        <h2>Lidl Assortiment</h2>
+        <p>2024 / 2025</p>
+    </section>
+
+    <section id="product-page">
+
+        <div id="route">
+            <a href="../lidl.html"><h1>Lidl vuurwerk</h1></a>
+            <i class="fi-bs-angle-small-right"></i>
+            <h1 class="route-active">Fonteinen</h1>          
+        </div>
+
+        <div id="block-container"></div>
+
+        <div id="product-section">
+            <div id="product-sidebar">
+
+                <div id="sidebar-box">
+                    <div id="sidebar-btn">
+                        <a href="../lidl.html" id="dropdown-shop">Lidl vuurwerk</a>
+                        <i onclick="toggleDropdown(this.parentNode)" class="fi-sr-angle-small-down arrow-icon"></i>
+                    </div>
+                    <div id="category-dropdown">
+                        <div>
+                            <div id="category-btn"><a href="cakes.html">Cakes</a></div>
+                            <div id="category-btn"><a href="compounds.html">Compounds</a></div>
+                            <div id="category-btn"><a href="fonteinen.html" class="active">Fonteinen</a></div>
+                            <div id="category-btn"><a href="vuurpijlen.html">Vuurpijlen</a></div>
+                            <div id="category-btn"><a href="knalvuurwerk.html">Knalvuurwerk</a></div>
+                            <div id="category-btn"><a href="pakketten.html">Pakketten</a></div>
+                            <div id="category-btn"><a href="singleshots.html">Single Shots</a></div>
+                            <div id="category-btn"><a href="overig.html">Overig</a></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="sidebar-box">
+                    <div id="sidebar-btn">
+                        <a href="../aldi/sud.html" id="dropdown-shop">Aldi Sud vuurwerk</a>
+                        <i onclick="toggleDropdown(this.parentNode)" class="fi-sr-angle-small-down arrow-icon"></i>
+                    </div>
+                    <div id="category-dropdown">
+                        <div>
+                            <div id="category-btn"><a href="../aldi/sud/cakes.html">Cakes</a></div>
+                            <div id="category-btn"><a href="../aldi/sud/compounds.html">Compounds</a></div>
+                            <div id="category-btn"><a href="../aldi/sud/fonteinen.html">Fonteinen</a></div>
+                            <div id="category-btn"><a href="../aldi/sud/vuurpijlen.html">Vuurpijlen</a></div>
+                            <div id="category-btn"><a href="../aldi/sud/pakketten.html">Pakketten</a></div>
+                            <div id="category-btn"><a href="../aldi/sud/singleshots.html">Single Shots</a></div>
+                            <div id="category-btn"><a href="../aldi/sud/overig.html">Overig</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sidebar-box">
+                    <div id="sidebar-btn">
+                        <a href="../aldi/nord.html" id="dropdown-shop">Aldi Nord vuurwerk</a>
+                        <i onclick="toggleDropdown(this.parentNode)" class="fi-sr-angle-small-down arrow-icon"></i>
+                    </div>
+                    <div id="category-dropdown">
+                        <div>
+                            <div id="category-btn"><a href="../aldi/nord/cakes.html">Cakes</a></div>
+                            <div id="category-btn"><a href="../aldi/nord/compounds.html">Compounds</a></div>
+                            <div id="category-btn"><a href="../aldi/nord/fonteinen.html">Fonteinen</a></div>
+                            <div id="category-btn"><a href="../aldi/nord/vuurpijlen.html">Vuurpijlen</a></div>
+                            <div id="category-btn"><a href="../aldi/nord/pakketten.html">Pakketten</a></div>
+                            <div id="category-btn"><a href="../aldi/nord/singleshots.html">Single Shots</a></div>
+                            <div id="category-btn"><a href="../aldi/nord/overig.html">Overig</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>         
+
+            <div id="product-container">
+                <div id="listing-row">
+                    <div id="page-btn-1">
+                        <button id="first-page" onclick="changePage(1)"><i class="fi-bs-angle-double-small-left"></i></button>
+                        <button id="prev-page" onclick="prevPage()"><i class="fi-bs-angle-small-left"></i></button>
+                        <button id="link-page"></button>
+                        <button id="next-page" onclick="nextPage()"><i class="fi-bs-angle-small-right"></i></button>
+                        <button id="first-page" onclick="changePage(totalPages)"><i class="fi fi-bs-angle-double-small-right"></i></button>
+                    </div>
+                    <div id="custom-select">
+                        <div class="selected" id="sorting-form">
+                            <h1>Naam A-Z</h1>
+                            <i class="fi-br-angle-down"></i>
+                        </div>
+                        <div id="options">
+                            <div class="option" data-value="1">Nieuwste eerst</div>
+                            <div class="option" data-value="2">Naam A-Z</div>
+                            <div class="option" data-value="3">Naam Z-A</div>
+                            <div class="option" data-value="4">Prijs stijgt</div>
+                            <div class="option" data-value="5">Prijs Aflopend</div>
+                        </div>
+                    </div>                                     
+                </div>
+                <div id="products-rows">
+
+                </div>   
+                <div id="listing-row">
+                    <div id="page-btn-2">
+                        <button id="first-page" onclick="changePage(1)"><i class="fi-bs-angle-double-small-left"></i></button>
+                        <button id="prev-page" onclick="prevPage()"><i class="fi-bs-angle-small-left"></i></button>
+                        <button id="link-page"></button>
+                        <button id="next-page" onclick="nextPage()"><i class="fi-bs-angle-small-right"></i></button>
+                        <button id="first-page" onclick="changePage(totalPages)"><i class="fi fi-bs-angle-double-small-right"></i></button>
+                    </div>                                    
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <footer id="footer">
+        <div id="footer-content">
+            <h1 id="copyright">© 2024 - 2024 placeholder</h1>
+            <div id="footer-icons">
+                <i id="tiktok" class="fa-brands fa-tiktok"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-youtube"></i>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+
+<script>
+// Sample product data
+const products = [
+    {
+        name: "Laser",
+        brand: "Weco",
+        price: 3.99,
+        imgSrc: "../img/lidl/Laser.jpg",
+        local: 'false'
+    },
+    {
+        name: "Yin und Yang",
+        brand: "Weco",
+        price: 4.99,
+        imgSrc: "img/Temp-Image.jpg",
+        local: 'false'
+    },
+    {
+        name: "Vulkan Stars",
+        brand: "Weco",
+        price: 6.99,
+        imgSrc: "img/Temp-Image.jpg",
+        local: 'false'
+    },
+    {
+        name: "Ocean of lights",
+        brand: "Weco",
+        price: 8.99,
+        imgSrc: "../img/lidl/Ocean-of-Lights.jpg",
+        local: 'false'
+    },
+
+    // Add more products as needed
+];
+
+
+let currentPage = 1; // Default to the first page
+const productsPerPage = 24; // Number of products per page
+
+// Check and restore `currentPage` and sorting option if returning from another page
+const previousPage = localStorage.getItem('previousPage');
+
+if (previousPage && previousPage.includes('template.html')) {
+    const savedPage = localStorage.getItem('currentPage');
+    if (savedPage) {
+        currentPage = parseInt(savedPage, 10); // Use the saved page number if it exists
+        // console.log('Restored page:', currentPage);
+    }
+
+    const savedSortingValue = localStorage.getItem('sortingValue');
+    if (savedSortingValue) {
+        applySortBasedOnValue(savedSortingValue); // Apply the saved sorting value
+        // console.log('Restored sorting value:', savedSortingValue);
+    }
+    
+    localStorage.setItem('previousPage', window.location.href); // Update the previousPage with current URL
+} else {
+    // Reset to defaults if not coming from `template.html`
+    currentPage = 1; // Reset currentPage to default
+    localStorage.removeItem('currentPage'); // Clear saved currentPage
+    localStorage.removeItem('sortingValue'); // Clear saved sorting value
+    // console.log('Resetting to default settings');
+}
+
+
+// Function to display products
+function displayProducts() {
+    // console.log("Displaying products for page", currentPage);
+    const productContainer = document.getElementById('products-rows');
+    productContainer.innerHTML = ''; // Clear existing products
+
+    const startIndex = (currentPage - 1) * productsPerPage;
+    const endIndex = startIndex + productsPerPage;
+    const productsToDisplay = products.slice(startIndex, endIndex);
+
+    productsToDisplay.forEach(product => {
+        const uniqueKey = `${product.name.replace(/\s+/g, '-')}_lidl`;
+        const productLink = encodeURIComponent(product.name.replace(/ /g, '-'));
+
+        const productBox = document.createElement('div');
+        productBox.id = 'product-box';
+        productBox.style.visibility = 'hidden'; // Hide product initially
+
+        productBox.innerHTML = `
+            <a onclick="setProductLinkAndNavigate('${productLink}', '${uniqueKey}')">
+                ${product.local === 'true' ? ` 
+                    <div id="alert">
+                        <i class="fi-rr-exclamation" style="margin-right: 5px;"></i>
+                        <span id="text-alert">Let op! Alleen lokaal beschikbaar</span>
+                    </div>
+                ` : ''}
+                <div id="product-img-box">
+                    <img id="product-img" src="${product.imgSrc}" alt="${productLink}">
+                </div>
+                <span class="shop" style="display: none;">Lidl</span>
+                <h1 id="product-brand">${product.brand}</h1>
+                <h2 id="product-name">${product.name}</h2>
+                <h3 id="product-price">€${product.price}</h3>
+            </a>
+            <button id="product-cart" onclick="addToCart(event, '${product.name}', 'lidl')">Voeg toe aan lijstje</button>
+        `;
+
+        const img = productBox.querySelector('#product-img');
+        img.onload = () => {
+            productBox.style.visibility = 'visible'; // Show product when image is loaded
+        };
+        img.onerror = () => {
+            console.error(`Failed to load image: ${img.src}`);
+            productBox.style.visibility = 'visible'; // Still show the product even if the image fails
+        };
+
+        productContainer.appendChild(productBox);
+    });
+}
+
+// Function to display pagination
+function displayPagination(containerId) {
+    // console.log('DisplayPagination currentPage:', currentPage); // Track currentPage during pagination rendering
+    const paginationContainer = document.getElementById(containerId);
+    if (!paginationContainer) return;
+
+    const totalPages = Math.ceil(products.length / productsPerPage);
+
+    paginationContainer.innerHTML = `
+        <button id="first-page-${containerId}" onclick="changePage(1, '${containerId}')" ${currentPage === 1 ? 'disabled' : ''}>
+            <i class="fi-bs-angle-double-small-left"></i>
+        </button>
+        <button id="prev-page-${containerId}" onclick="prevPage('${containerId}')" ${currentPage === 1 ? 'disabled' : ''}>
+            <i class="fi-bs-angle-small-left"></i>
+        </button>
+    `;
+
+    for (let i = 1; i <= totalPages; i++) {
+        paginationContainer.innerHTML += `
+            <button id="link-page-${containerId}" class="${i === currentPage ? 'active' : ''}" onclick="changePage(${i}, '${containerId}')">
+                ${i}
+            </button>
+        `;
+    }
+
+    paginationContainer.innerHTML += `
+        <button id="next-page-${containerId}" onclick="nextPage('${containerId}')" ${currentPage === totalPages ? 'disabled' : ''}>
+            <i class="fi-bs-angle-small-right"></i>
+        </button>
+        <button id="last-page-${containerId}" onclick="changePage(${totalPages}, '${containerId}')" ${currentPage === totalPages ? 'disabled' : ''}>
+            <i class="fi-bs-angle-double-small-right"></i>
+        </button>
+    `;
+}
+
+
+
+
+// Function to change page
+function changePage(page, containerId) {
+    // console.log('Changing page to:', page); // Log page change
+    if (page !== currentPage) {
+        currentPage = page;
+        // console.log('Setting currentPage to:', currentPage); // Log currentPage after setting
+        localStorage.setItem('currentPage', currentPage);
+        displayProducts(); // Show products for the new page
+        displayPagination(containerId); // Update pagination
+        displayPagination(containerId === 'page-btn-1' ? 'page-btn-2' : 'page-btn-1');
+        window.scrollTo(0, 0); // Scroll to top
+    }
+}
+
+// Function to go to the previous page
+function prevPage(containerId) {
+    if (currentPage > 1) {
+        currentPage--;
+        // console.log('Setting currentPage to:', currentPage); // Log currentPage after decrement
+        localStorage.setItem('currentPage', currentPage);
+        displayProducts();
+        displayPagination(containerId);
+        displayPagination(containerId === 'page-btn-1' ? 'page-btn-2' : 'page-btn-1');
+        window.scrollTo(0, 0);
+    }
+}
+
+
+// Function to go to the next page
+function nextPage(containerId) {
+    const totalPages = Math.ceil(products.length / productsPerPage);
+    if (currentPage < totalPages) {
+        currentPage++;
+        // console.log('Setting currentPage to:', currentPage); // Log currentPage after increment
+        localStorage.setItem('currentPage', currentPage);
+        displayProducts();
+        displayPagination(containerId);
+        displayPagination(containerId === 'page-btn-1' ? 'page-btn-2' : 'page-btn-1');
+        window.scrollTo(0, 0);
+    }
+}
+
+
+let savedSortingValue = '2'; // Default sorting value (A-Z)
+
+if (previousPage && previousPage.includes('template.html')) {
+    savedSortingValue = localStorage.getItem('sortingValue'); // Retrieve stored sorting value
+} else {
+    // Reset to default if not coming from template.html
+    savedSortingValue = '2'; // Default sorting value
+}
+
+// Find and activate the correct dropdown option
+const activeOption = document.querySelector(`.option[data-value="${savedSortingValue}"]`);
+if (activeOption) {
+    document.querySelectorAll('.option').forEach(option => option.classList.remove('active'));
+    activeOption.classList.add('active');
+    
+    // Update the sorting title
+    const sortingTitle = document.getElementById('sorting-form').querySelector("h1");
+    sortingTitle.innerText = activeOption.innerText; // Set the text of the sorting title
+}
+
+// Apply the sorting after setting the active option
+applySortBasedOnValue(savedSortingValue);
+
+// Handle dropdown interaction
+const sortingTitle = document.getElementById('sorting-form');
+sortingTitle.addEventListener("click", toggleSortingForm); // Toggle dropdown on title click
+
+const optionElements = document.querySelectorAll('.option');
+
+optionElements.forEach(option => {
+    option.addEventListener("click", function () {
+        sortingTitle.querySelector("h1").innerText = option.innerText; // Update displayed text
+        const sortingValue = option.dataset.value;
+
+        // Reset currentPage to 1 only when sorting changes
+        currentPage = 1;
+        localStorage.setItem('currentPage', 1);
+        // console.log('Page reset to 1 due to sorting option click.');
+
+        // Call sortProducts based on selected sorting option
+        applySortBasedOnValue(sortingValue);
+
+        // Hide options after selection
+        const options = document.getElementById('options');
+        options.style.display = "none";
+
+        // Remove active class from all options and set it to the selected option
+        optionElements.forEach(opt => opt.classList.remove('active'));
+        option.classList.add('active');
+    });
+
+    // Remove the active class when hovering over options
+    option.addEventListener('mouseenter', function () {
+        const currentActive = document.getElementById('options').querySelector('.active');
+        if (currentActive && currentActive !== option) {
+            currentActive.classList.remove('active');
+        }
+    });
+});
+
+// Close the dropdown when clicking outside of it
+document.addEventListener("click", function (event) {
+    const options = document.getElementById('options');
+    const sortingForm = document.getElementById('sorting-form');
+
+    // Check if the click was outside the dropdown and title
+    if (options.style.display === "block" && !options.contains(event.target) && !sortingForm.contains(event.target)) {
+        options.style.display = "none";
+        
+        // Restore the active class to the previously selected option
+        optionElements.forEach(option => option.classList.remove('active'));
+        if (activeOption) {
+            activeOption.classList.add('active');
+        }
+    }
+});
+
+
+// Function to apply sorting based on saved or selected value
+function applySortBasedOnValue(sortingValue) {
+    // Apply the sorting logic only once during page load or when sorting is updated
+    if (sortingValue == 1) sortProducts("price-desc"); // Nieuwste eerst (highest price)
+    if (sortingValue == 2) sortProducts("name-asc");   // Name A-Z
+    if (sortingValue == 3) sortProducts("name-desc");  // Name Z-A
+    if (sortingValue == 4) sortProducts("price-asc");  // Price Low to High
+    if (sortingValue == 5) sortProducts("price-desc"); // Price High to Low
+
+    // Save the selected sorting option to localStorage
+    localStorage.setItem('sortingValue', sortingValue);
+
+    // After sorting, display products and update pagination
+    displayProducts();
+    displayPagination('page-btn-1');
+    displayPagination('page-btn-2');
+}
+
+
+// Function to sort products
+function sortProducts(criteria) {
+    if (criteria === "name-asc") {
+        products.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (criteria === "name-desc") {
+        products.sort((a, b) => b.name.localeCompare(a.name));
+    } else if (criteria === "price-asc") {
+        products.sort((a, b) => a.price - b.price);
+    } else if (criteria === "price-desc") {
+        products.sort((a, b) => b.price - a.price);
+    }
+}
+
+
+// Function to toggle dropdown options
+function toggleSortingForm(event) {
+    const options = document.getElementById('options');
+    const isOpen = options.style.display === 'block';
+    
+    // If dropdown is open, don't close it if clicked on the sorting title
+    if (!isOpen && event.target) {
+        options.style.display = 'block'; // Open the dropdown
+    } else if (isOpen && event.target) {
+        options.style.display = 'none'; // Close the dropdown
+        activeOption.classList.add('active'); // Add active to the remembered option
+    }
+}
+</script>

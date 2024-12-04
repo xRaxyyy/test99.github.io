@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        // IMPORTANT: set this in <HEAD> top before any other tag.
+        const setTheme = (theme) => {
+          theme ??= localStorage.theme || "light";
+          document.documentElement.dataset.theme = theme;
+          localStorage.theme = theme;
+        };
+        setTheme();
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lidl - Discounter Feuerwerk</title>
+
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-bold-straight/css/uicons-bold-straight.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css">
+
+    <script src="https://kit.fontawesome.com/f6f6445ca5.js" crossorigin="anonymous"></script>
+
+    <script src="../scripts/scrollTop.js"></script>
+    <script src="../scripts/toggleDropdown.js" defer></script>
+    <script src="../scripts/searchOverlay.js" defer></script>
+    <script src="../scripts/sidebar.js" defer></script>
+    <script src="../scripts/countdown.js" defer></script>
+    <script src="../scripts/preloader.js" defer></script>
+    <script src="../scripts/darkmode.js" defer></script>
+    <script src="../scripts/cart.js" defer></script>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <section id="navigation">
+        <div id="nav-content">
+
+            <div id="logo">
+                <img src="img/Logo.png" alt="">
+            </div>
+
+            <div id="countdown-container">
+                <h1 id="date-text">31 DECEMBER 18:00u 2024:</h1>
+                <div id="countdown">
+                    <div class="time" id="days"><h1>00</h1><h2>d</h2></div>
+                    <div class="time" id="hours"><h1>00</h1><h2>h</h2></div>
+                    <div class="time" id="minutes"><h1>00</h1><h2>m</h2></div>
+                    <div class="time" id="seconds"><h1>00</h1><h2>s</h2></div>
+                </div>
+            </div>
+            
+
+            <div id="other-btns">
+                <i id="search-link" onclick="toggleSearchOverlay(event)" class="fi-br-search"></i>
+                <a id="shopping-cart" href="../cart.html">
+                    <i id="cart-link" class="fi-br-shopping-bag"></i>
+                    <h1 id="cart-counter">0</h1>
+                </a>
+                <i id="menu-link" onclick="toggleSidebar(event)" class="fi-br-menu-burger"></i>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="sidebar-holder" onclick="toggleSidebar(event)">
+        <nav id="sidebar">
+            <ul>
+                <li>
+                    <button class="dropdown-btn">
+                        <a href="index.html">
+                            <i class="fa fa-home"></i>
+                            <span>Home</span>
+                        </a>
+                    </button>
+                </li>
+                <li>
+                    <button class="dropdown-btn">
+                        <div>
+                            <i class="fa fa-store"></i>
+                            <a href="lidl.html"><span>Lidl</span></a>
+                        </div>
+                        <i onclick="toggleSubMenu(this)" class="fa fa-chevron-down"></i>
+                    </button>
+                    <ul class="sub-menu">
+                        <div>
+                            <li><a href="lidl/cakes.html">Cakes</a></li>
+                            <li><a href="lidl/compounds.html">Compounds</a></li>
+                            <li><a href="lidl/fonteinen.html">Fonteinen</a></li>
+                            <li><a href="lidl/vuurpijlen.html">Vuurpijlen</a></li>
+                            <li><a href="lidl/knalvuurwerk.html">Knalvuurwerk</a></li>
+                            <li><a href="lidl/pakketten.html">Pakketten</a></li>
+                            <li><a href="lidl/singleshots.html">Single Shots</a></li>
+                            <li><a href="lidl/overig.html">Overig</a></li>
+                        </div>
+                    </ul>
+                </li>
+                <li>
+                    <button class="dropdown-btn">
+                        <div>
+                            <i class="fa fa-store"></i>
+                            <a href="aldi/sud.html"><span>Aldi Sud</span></a>
+                        </div>
+                        <i onclick="toggleSubMenu(this)" class="fa fa-chevron-down"></i>
+                    </button>
+                    <ul class="sub-menu">
+                        <div>
+                            <li><a href="aldi/sud/cakes.html">Cakes</a></li>
+                            <li><a href="aldi/sud/compounds.html">Compounds</a></li>
+                            <li><a href="aldi/sud/fonteinen.html">Fonteinen</a></li>
+                            <li><a href="aldi/sud/vuurpijlen.html">Vuurpijlen</a></li>
+                            <li><a href="aldi/sud/pakketten.html">Pakketten</a></li>
+                            <li><a href="aldi/sud/singleshots.html">Single Shots</a></li>
+                            <li><a href="aldi/sud/overig.html">Overig</a></li>
+                        </div>
+                    </ul>
+                </li>
+                <li>
+                    <button class="dropdown-btn">
+                        <div>
+                            <i class="fa fa-store"></i>
+                            <a href="aldi/nord.html"><span>Aldi Nord</span></a>
+                        </div>
+                        <i onclick="toggleSubMenu(this)" class="fa fa-chevron-down"></i>
+                    </button>
+                    <ul class="sub-menu">
+                        <div>
+                            <li><a href="aldi/nord/cakes.html">Cakes</a></li>
+                            <li><a href="aldi/nord/compounds.html">Compounds</a></li>
+                            <li><a href="aldi/nord/fonteinen.html">Fonteinen</a></li>
+                            <li><a href="aldi/nord/vuurpijlen.html">Vuurpijlen</a></li>
+                            <li><a href="aldi/nord/knalvuurwerk.html">Knalvuurwerk</a></li>
+                            <li><a href="aldi/nord/pakketten.html">Pakketten</a></li>
+                            <li><a href="aldi/nord/singleshots.html">Single Shots</a></li>
+                            <li><a href="aldi/nord/overig.html">Overig</a></li>
+                        </div>
+                    </ul>
+                </li>
+
+                <div id="other-box">
+                    <div id="darkmode-box">
+                        <div id="theme-heading">
+                            <i class="fa fa-moon"></i>
+                            <h1>Light Mode</h1>
+                        </div>
+                        <div id="darkmode-toggle">
+                            <div class="toggle-btn"></div>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+        </nav>
+    </section>
+
+    
+    <section id="scroll-top">
+        <div id="scroll-btn" onclick="scrollToTop()">
+            <i class="fi-br-angle-up"></i>
+        </div>
+    </section>
+
+
+    <section id="search-overlay">
+        <div id="search-bar">
+            <div id="search-holder">
+                <div id="search-box">
+                    <i class="fi-br-search"></i>
+                    <input id="search-input" type="text" placeholder="Zoekterm invoeren..">
+                    <div id="search-icon">
+                        <i class="fi-br-search"></i>
+                    </div>
+                </div>
+                <div id="suggestions" class="suggestions-list">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="prodetails" class="section-p1">
+        <div class="filler">
+            <a id="prev" href="lidl.html">
+                <i class="fi-br-angle-left"></i> Terug
+            </a>
+            <span class="home" id="grey"><a href="index.html">Home</a></span>
+            <span class="slash"> / </span>
+            <span class="lidl" id="grey"><a id="hierarchy-shop" href=""></a></span>
+            <span class="slash"> / </span>
+            <span class="cakes" id="grey"><a id="hierarchy-catagory" href=""></a></span>
+            <span class="slash"> / </span>
+            <span class="name" id="hierarchy-name"></span>
+        </div>
+
+        <div id="product-container">
+            <div id="img-selection">
+                <div id="img-controls">
+                    <div id="img-icons">
+                        <i id="prev-img" class="fi-br-angle-left"></i>
+                        <i id="next-img" class="fi-br-angle-right"></i>
+                        <div id="zoom-img"><i class="fi-br-zoom-in"></i></div>
+                    </div>
+                    <div id="product-img">
+                        <img id="product-image" src="" alt="Product Image">
+                    </div>
+                </div>
+                <div id="small-image-col">
+                    <div id="small-product-img" class="small-img-box">
+                        <img id="product-image-small" src="" class="selected" alt="Product Image">
+                        <div id="small-background"></div>
+                    </div>
+                    <div id="small-video-box"" class="small-img-box video-box">
+                        <img id="play-button" src="img/play-button.png" alt="Play Button">
+                        <img id="thumbnail" src="" alt="Thumbnail">
+                    </div>
+                </div>
+            </div>
+            <div id="single-pro-details">
+                <div id="name-local">
+                    <h1 id="product-name"></h1>
+                    <div id="exclamation" class="">
+                        <i class="fi-rr-exclamation" id="exclamation-icon"></i>
+                        <span id="exclamation-text">Let op! Alleen lokaal beschikbaar</span>
+                    </div>
+                </div>                
+                <h2 id="product-category"></h2>
+                <h4 id="product-price"></h4>
+                <h5 id="amount">Aantal</h1>
+                <div id="cart">
+                    <div id="quantity-control">
+                        <button id="minus-btn"><i class="fi-rr-minus"></i></button>
+                        <input id="cart-input" type="number" value="1" min="1">
+                        <button id="plus-btn"><i class="fi-rr-plus"></i></button>
+                    </div>
+                    <button id="add-cart" onclick="">Voeg toe aan lijstje</button>
+                </div>
+                <div id="single-pro-tabel">
+                    <div id="specifications-text">
+                        <h1 id="specifications">Specificaties</h1>
+                        <div id="line"></div>
+                    </div>
+                    <div id="tabel1">
+                        <h1>Kruit totaal (gram)</h1>
+                        <h2 id="product-kruid"></h2>
+                    </div>
+                    <div id="tabel2">
+                        <h1>Importeur</h1>
+                        <h2 id="product-importeur"></h2>
+                    </div>
+                    <div id="tabel1">
+                        <h1>Aantal delen</h1>
+                        <h2 id="product-parts"></h2>
+                    </div>
+                    <div id="tabel2">
+                        <h1>Schoten</h1>
+                        <h2 id="product-shots"></h2>
+                    </div>
+                    <div id="tabel1">
+                        <h1>Kaliber</h1>
+                        <h2 id="product-caliber"></h2>
+                    </div>
+                    <div id="tabel2">
+                        <h1>Brandduur</h1>
+                        <h2 id="product-burnTime"></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+
+<script>
+async function loadProductData() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const productLink = urlParams.get('product');
+    const productName = productLink.replace(/-/g, ' ');
+    const uniqueKey = localStorage.getItem('uniqueKey');
+
+    // if (uniqueKey) {
+    //     alert(`Retrieved uniqueKey: ${uniqueKey}`);
+    // } else {
+    //     alert('uniqueKey not found in localStorage');
+    // }
+
+    // Fetch product data
+    const response = await fetch('products.json');
+    if (!response.ok) {
+        throw new Error(`Error fetching the product data: ${response.statusText}`);
+    }
+    const products = await response.json();
+
+    // Find the product matching the name and shop
+    const product = products.find(p => `${p.name.replace(/\s+/g, '-')}_${p.cartplace}` === uniqueKey);
+    if (product) {
+        // Check if elements exist before trying to set their properties
+        const addCartButton = document.getElementById('add-cart');
+        if (addCartButton) {
+            addCartButton.onclick = function(event) { addToCart(event, product.name, product.cartplace); };
+        }
+
+        const pageTitle = document.querySelector('title');
+        if (pageTitle) {
+            pageTitle.textContent = product.name + " - Discounter Feuerwerk";
+        }
+
+        const exclamation = document.getElementById('exclamation');
+        if (exclamation) {
+            exclamation.classList = `${product.local}`;
+        }
+
+        // Handle product details conditionally
+        if (product.shophtml) {
+            const prevLink = document.getElementById('prev');
+            if (prevLink) {
+                prevLink.href = `${product.shopname.toLowerCase()}/${product.category.toLowerCase()}.html`;
+            }
+        }
+
+        const hierarchyShop = document.getElementById('hierarchy-shop');
+        if (hierarchyShop && product.shopname) {
+            hierarchyShop.href = product.shophtml;
+            hierarchyShop.textContent = product.shopname;
+        }
+
+        const hierarchyCategory = document.getElementById('hierarchy-catagory');
+        if (hierarchyCategory && product.category) {
+            hierarchyCategory.href = `../../${product.shopname.toLowerCase().replace(/\s+/g, '/')}/${product.category.toLowerCase().replace(/\s+/g, '-')}.html`;
+            hierarchyCategory.textContent = product.category;
+        }
+
+
+        const hierarchyName = document.getElementById('hierarchy-name');
+        if (hierarchyName && product.name) {
+            hierarchyName.textContent = product.name;
+        }
+
+        const productNameElem = document.getElementById('product-name');
+        if (productNameElem && product.name) {
+            productNameElem.textContent = product.name;
+        }
+
+        const productCategory = document.getElementById('product-category');
+        if (productCategory && product.category && product.type) {
+            productCategory.textContent = product.category + " | " + product.type;
+        }
+
+        const productPrice = document.getElementById('product-price');
+        if (productPrice && product.price) {
+            productPrice.textContent = product.price;
+        }
+
+        const productKruid = document.getElementById('product-kruid');
+        if (productKruid && product.kruid) {
+            productKruid.textContent = product.kruid;
+        }
+
+        const productImporteur = document.getElementById('product-importeur');
+        if (productImporteur && product.importeur) {
+            productImporteur.textContent = product.importeur;
+        }
+
+        const productParts = document.getElementById('product-parts');
+        if (productParts && product.delen) {
+            productParts.textContent = product.delen;
+        }
+
+        const productShots = document.getElementById('product-shots');
+        if (productShots && product.schoten) {
+            productShots.textContent = product.schoten;
+        }
+
+        const productCaliber = document.getElementById('product-caliber');
+        if (productCaliber && product.kaliber) {
+            productCaliber.textContent = product.kaliber;
+        }
+
+        const productBurnTime = document.getElementById('product-burnTime');
+        if (productBurnTime && product.brandduur) {
+            productBurnTime.textContent = product.brandduur;
+        }
+
+        // Update images conditionally
+        if (product.videoId) {
+            const thumbnailElement = document.getElementById('thumbnail');
+            if (thumbnailElement) {
+                thumbnailElement.src = `https://img.youtube.com/vi/${product.videoId}/hqdefault.jpg`;
+            }
+
+            const smallVideoBox = document.getElementById('small-video-box');
+            if (smallVideoBox) {
+                smallVideoBox.style.display = "block";
+            }
+
+            const prevImg = document.getElementById('prev-img');
+            if (prevImg) {
+                prevImg.style.display = "block";
+            }
+
+            const nextImg = document.getElementById('next-img');
+            if (nextImg) {
+                nextImg.style.display = "block";
+            }
+        } else {
+            const smallVideoBox = document.getElementById('small-video-box');
+            if (smallVideoBox) {
+                smallVideoBox.style.display = "none";
+            }
+
+            const prevImg = document.getElementById('prev-img');
+            if (prevImg) {
+                prevImg.style.display = "none";
+            }
+
+            const nextImg = document.getElementById('next-img');
+            if (nextImg) {
+                nextImg.style.display = "none";
+            }
+        }
+
+        const productImage = document.getElementById('product-image');
+        if (productImage && product.image) {
+            productImage.src = product.image;
+        }
+
+        const productImageSmall = document.getElementById('product-image-small');
+        if (productImageSmall && product.image) {
+            productImageSmall.src = product.image;
+        }
+    }
+}
+
+
+
+
+const smallImgBoxes = document.querySelectorAll('.small-img-box');
+const mediaContainer = document.querySelector('#product-img');
+const zoomImgButton = document.querySelector('#zoom-img');
+const zoomOverlay = document.querySelector('#zoom-overlay'); // Ensure you have a zoom overlay element
+let isVideoPlaying = false;
+let currentIndex = 0; // Track the current index of the small image box
+let productData = []; // To store fetched product data
+
+// Function to fetch product data
+async function fetchProductData() {
+    try {
+        const response = await fetch('products.json');
+        if (!response.ok) {
+            throw new Error('Error fetching the product data: ' + response.statusText);
+        }
+        productData = await response.json();
+        return productData;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function updateMedia(index) {
+    const selectedBox = smallImgBoxes[index];
+    const urlParams = new URLSearchParams(window.location.search);
+    const productLink = urlParams.get('product');
+    const productName = productLink.replace(/-/g, ' ');
+
+    // Find the product in the data
+    const product = productData.find(p => p.name === productName);
+
+    // Update selected class
+    smallImgBoxes.forEach(b => {
+        b.classList.remove('selected');
+        b.classList.remove('disabled'); // Enable all thumbnails
+    });
+    selectedBox.classList.add('selected');
+
+    // Update the media based on whether it's a video or image
+    if (product.videoId && selectedBox.classList.contains('video-box')) {
+        // Switch to video
+        mediaContainer.innerHTML = '';
+
+        let iframe = mediaContainer.querySelector('iframe');
+        if (!iframe) {
+            iframe = document.createElement('iframe');
+            iframe.width = "100%";
+            iframe.height = "100%";
+            iframe.frameBorder = "0";
+            iframe.allow = "autoplay; encrypted-media";
+            iframe.allowFullscreen = true;
+            mediaContainer.appendChild(iframe);
+        }
+        iframe.src = `https://www.youtube.com/embed/${product.videoId}?controls=1&modestbranding=1&rel=0&autoplay=1`;
+        mediaContainer.classList.add('iframe-active');
+        isVideoPlaying = true;
+
+        // Hide zoom button and set arrows to white
+        zoomImgButton.style.display = 'none';
+        document.querySelector('#prev-img').classList.add('active');
+        document.querySelector('#next-img').classList.add('active');
+        selectedBox.classList.add('disabled');
+    } else {
+        // Switch to image
+        mediaContainer.innerHTML = `<img src="${product.image}" alt="${product.name}">`;
+        mediaContainer.classList.remove('iframe-active');
+        isVideoPlaying = false;
+
+        // Show zoom button and reset arrow color
+        zoomImgButton.style.display = 'block';
+        document.querySelector('#prev-img').classList.remove('active');
+        document.querySelector('#next-img').classList.remove('active');
+
+        // Ensure the image is also set in the small-img-box if no video
+        if (product.image) {
+            selectedBox.querySelector('img').src = product.image;
+        }
+    }
+}
+
+
+
+
+// Prevent click events on the video thumbnail when it is disabled
+smallImgBoxes.forEach((box, index) => {
+    box.addEventListener('click', (event) => {
+        // Check if the box is disabled and is the video box
+        if (box.classList.contains('disabled')) {
+            event.stopPropagation(); // Prevent clicks on the disabled box
+        } else {
+            updateMedia(index);
+        }
+    });
+});
+
+
+
+// Fetch external JSON data and set up event listeners
+fetchProductData().then(() => {
+    // Set the first small image box as selected on startup
+    smallImgBoxes[0].classList.add('selected');
+    updateMedia(0); // Load the first media item by default
+
+    // Click event for small image boxes
+    smallImgBoxes.forEach((box, index) => {
+        box.addEventListener('click', () => {
+            currentIndex = index; // Update current index
+            updateMedia(currentIndex);
+        });
+    });
+
+    // Event listeners for arrows
+    document.querySelector('#prev-img').addEventListener('click', () => {
+        currentIndex = (currentIndex === 0) ? smallImgBoxes.length - 1 : currentIndex - 1;
+        updateMedia(currentIndex);
+    });
+
+    document.querySelector('#next-img').addEventListener('click', () => {
+        currentIndex = (currentIndex === smallImgBoxes.length - 1) ? 0 : currentIndex + 1;
+        updateMedia(currentIndex);
+    });
+}).catch(error => console.error('Error fetching product data:', error));
+
+
+
+// Zoom functionality
+zoomImgButton.addEventListener('click', () => {
+    const selectedImg = smallImgBoxes[currentIndex].querySelector('img');
+    const zoomOverlay = document.createElement('div');
+    zoomOverlay.id = 'zoom-overlay';
+    zoomOverlay.innerHTML = `<img src="${selectedImg.src}" alt="Zoomed Image">`;
+    zoomOverlay.style.display = 'flex'; // Show the overlay
+    document.body.appendChild(zoomOverlay);
+    
+    zoomOverlay.addEventListener('click', () => {
+        document.body.removeChild(zoomOverlay); // Close zoom on click
+    });
+});
+
+// Call the loadProductData function when the page loads
+window.onload = () => {
+    loadProductData();
+    fetchProductData();
+};
+
+// When navigating away from the current page
+localStorage.setItem('previousPage', window.location.href);
+
+
+
+
+
+    </script>
+</body>
+
+</html>
